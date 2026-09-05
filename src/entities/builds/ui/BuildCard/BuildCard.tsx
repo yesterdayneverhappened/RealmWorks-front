@@ -33,6 +33,7 @@ const BuildCard = ({
           src={imageUrl}
           alt={title}
           fill
+          sizes="100%"
           className={styles.image}
         />
       </div>
@@ -42,7 +43,7 @@ const BuildCard = ({
           <div>{likes}</div>
         </div>
         <div className={styles.infoblock}>
-          <div>{title}</div>
+          <div className={styles.title}>{title}</div>
           <div>{author}</div>
           <div>{tags.join(", ")}</div>
         </div>

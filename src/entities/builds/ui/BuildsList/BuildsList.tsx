@@ -1,12 +1,13 @@
 import BuildCard from '../BuildCard/BuildCard';
+import styles from './BuildList.module.scss'
 
 const mockBuilds = [
   {
     id: '1',
     title: 'Medieval Castle',
     author: 'Steve',
-    imageUrl: 'https://picsum.photos/600/400?random=1',
-    avatarUrl: 'https://i.pravatar.cc/100?img=1',
+    imageUrl: '/image.jpg',
+    avatarUrl: '/image.jpg',
     category: 'Medieval',
     tags: ['Castle', 'Fantasy'],
     likes: 124,
@@ -18,8 +19,8 @@ const mockBuilds = [
     id: '2',
     title: 'Japanese Temple',
     author: 'Alex',
-    imageUrl: 'https://picsum.photos/600/500?random=2',
-    avatarUrl: 'https://i.pravatar.cc/100?img=2',
+    imageUrl: '/image.jpg',
+    avatarUrl: '/image.jpg',
     category: 'Japanese',
     tags: ['Temple', 'Japan'],
     likes: 248,
@@ -31,8 +32,8 @@ const mockBuilds = [
     id: '3',
     title: 'Cyberpunk City',
     author: 'Builder',
-    imageUrl: 'https://picsum.photos/600/350?random=3',
-    avatarUrl: 'https://i.pravatar.cc/100?img=3',
+    imageUrl: '/image.jpg',
+    avatarUrl: '/image.jpg',
     category: 'Sci-Fi',
     tags: ['City', 'Cyberpunk'],
     likes: 89,
@@ -44,8 +45,8 @@ const mockBuilds = [
     id: '4',
     title: 'Cozy Cottage',
     author: 'Notch',
-    imageUrl: 'https://picsum.photos/500/600?random=4',
-    avatarUrl: 'https://i.pravatar.cc/100?img=4',
+    imageUrl: '/image.jpg',
+    avatarUrl: '/image.jpg',
     category: 'Nature',
     tags: ['House', 'Cozy'],
     likes: 315,
@@ -58,8 +59,8 @@ const mockBuilds = [
 export default function BuildsList() {
   return (
     <section>
-      <div>
-        {mockBuilds.map((build) => (
+      <div className={styles.buildList}>
+        {...mockBuilds.map((build) => (
           <BuildCard
             key={build.id}
             title={build.title}
