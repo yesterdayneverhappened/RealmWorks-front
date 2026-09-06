@@ -67,7 +67,7 @@ export default function BuildsList() {
             author={build.author}
             imageUrl={build.imageUrl}
             avatarUrl={build.avatarUrl}
-            categories={build.category}
+            category={build.category}
             tags={build.tags}
             likes={build.likes}
             countComments={build.countComments}

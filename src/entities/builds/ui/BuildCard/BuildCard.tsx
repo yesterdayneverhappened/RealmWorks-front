@@ -1,11 +1,11 @@
 import Image from "next/image";
-import styles from "./BuildCars.module.scss";
+import styles from './BuildCards.module.scss';
 
 interface BuildCardProps {
   title: string;
   author: string;
   imageUrl: string;
-  categories: string;
+  category: string;
   avatarUrl: string;
   tags: string[];
   likes: number;
@@ -18,42 +18,98 @@ const BuildCard = ({
   title,
   imageUrl,
   author,
-  categories,
+  category,
   avatarUrl,
   tags,
   likes,
   countComments,
   countDownloads,
-  isLiked
+  isLiked,
 }: BuildCardProps) => {
   return (
-    <article className={styles.buildCard}>
-      <div className={styles.imageContainer}>
+    <article className={styles.card}>
+      <div className={styles.preview}>
         <Image
           src={imageUrl}
           alt={title}
           fill
           sizes="100%"
-          className={styles.image}
+          className={styles.previewImage}
         />
       </div>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <div>{categories}</div>
-          <div>{likes}</div>
+
+      <div className={styles.details}>
+        <div className={styles.meta}>
+          <div className={styles.category}>
+            {category}
+          </div>
+
+          <div className={styles.likes}>
+            <Image
+              src="/icons/heart.svg"
+              alt="like"
+              width={14}
+              height={14}
+              className={styles.likeIcon}
+            />
+            {likes}
+          </div>
         </div>
-        <div className={styles.infoblock}>
-          <div className={styles.title}>{title}</div>
-          <div>{author}</div>
-          <div>{tags.join(", ")}</div>
+
+        <div className={styles.info}>
+          <h2 className={styles.title}>
+            {title}
+          </h2>
+
+          <div className={styles.creator}>
+            <Image
+              src={avatarUrl}
+              alt={author}
+              width={24}
+              height={24}
+              className={styles.avatar}
+            />
+
+            <span className={styles.author}>
+              {author}
+            </span>
+          </div>
+
+          <div className={styles.tags}>
+            {tags.map((tag) => (
+              <span key={tag} className={styles.tag}>
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className={styles.footer}>
-          <div>{countComments}</div>
-          <div>{countDownloads}</div>
+
+        <div className={styles.stats}>
+          <div className={styles.stat}>
+            <Image
+              src="/icons/download.svg"
+              alt="download"
+              width={14}
+              height={14}
+              className={styles.likeIcon}
+            />
+            {countDownloads}
+          </div>
+
+          <div className={styles.stat}>
+            <Image
+              src="/icons/message-circle.svg"
+              alt="comment"
+              width={14}
+              height={14}
+              className={styles.likeIcon}
+            />
+            {countComments}
+          </div>
         </div>
       </div>
     </article>
   );
-}
+};
 
 export default BuildCard;
