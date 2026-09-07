@@ -1,13 +1,13 @@
-import React from 'react';
-import BuildCard from '@/entities/builds/ui/BuildCard/BuildCard';
-import BuildsList from '@/entities/builds/ui/BuildsList/BuildsList';
+import BuildsList from "@/entities/builds/ui/BuildsList/BuildsList";
+import { Header } from "@/widgets/headers";
 
 const Page = () => {
   return (
     <div>
+      <Header activeItem="explore" />
       <BuildsList />
     </div>
   );
-}
+};
 
 export default Page;

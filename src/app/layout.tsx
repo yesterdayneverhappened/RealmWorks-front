@@ -1,5 +1,6 @@
-import Providers from './providers';
-import { bricolage } from './fonst';
+import { bricolage, figtree } from "./fonts";
+import Providers from "./providers";
+import "./globals.scss";
 
 export default function RootLayout({
   children,
@@ -7,11 +8,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={bricolage.variable}>
+    <html lang="en" className={`${bricolage.variable} ${figtree.variable}`}>
       <body>
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

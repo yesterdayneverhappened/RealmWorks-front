@@ -1,0 +1,15 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  background: var(--bg-gray-color);
+  border-radius: 6px;
+
+  color: var(--secondary-text-color);
+
+  font-family: "Figtree", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+}

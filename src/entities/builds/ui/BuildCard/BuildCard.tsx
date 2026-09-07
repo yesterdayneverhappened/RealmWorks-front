@@ -1,4 +1,6 @@
 import Image from "next/image";
+import CategoryBadge from "@/entities/categories/ui/CategoryBadge/CategoryBadge";
+import TagsList from "@/entities/tags/ui/TagsList/TagsList";
 import styles from './BuildCards.module.scss';
 
 interface BuildCardProps {
@@ -24,7 +26,6 @@ const BuildCard = ({
   likes,
   countComments,
   countDownloads,
-  isLiked,
 }: BuildCardProps) => {
   return (
     <article className={styles.card}>
@@ -40,9 +41,7 @@ const BuildCard = ({
 
       <div className={styles.details}>
         <div className={styles.meta}>
-          <div className={styles.category}>
-            {category}
-          </div>
+          <CategoryBadge label={category} />
 
           <div className={styles.likes}>
             <Image
@@ -75,13 +74,7 @@ const BuildCard = ({
             </span>
           </div>
 
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <span key={tag} className={styles.tag}>
-                #{tag}
-              </span>
-            ))}
-          </div>
+          <TagsList tags={tags} />
         </div>
 
         <div className={styles.stats}>
