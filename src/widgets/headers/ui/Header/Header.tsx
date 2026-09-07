@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { headerLabels } from "../../constants/headerLabels";
 import styles from "./Header.module.scss";
 
 type HeaderNavItem = "explore" | "categories";
@@ -9,8 +10,12 @@ interface HeaderProps {
 }
 
 const navItems: { label: string; href: string; value: HeaderNavItem }[] = [
-  { label: "Explore", href: "/", value: "explore" },
-  { label: "Categories", href: "/categories", value: "categories" },
+  { label: headerLabels.nav.explore, href: "/", value: "explore" },
+  {
+    label: headerLabels.nav.categories,
+    href: "/categories",
+    value: "categories",
+  },
 ];
 
 const SearchIcon = () => (
@@ -75,7 +80,11 @@ const UploadIcon = () => (
 const Header = ({ activeItem = "explore" }: HeaderProps) => {
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo} aria-label="RealmWorks home">
+      <Link
+        href="/"
+        className={styles.logo}
+        aria-label={headerLabels.homeAriaLabel}
+      >
         <Image
           src="/icons/logo-cube.svg"
           alt=""
@@ -84,10 +93,10 @@ const Header = ({ activeItem = "explore" }: HeaderProps) => {
           priority
           className={styles.logoIcon}
         />
-        <span className={styles.logoText}>RealmWorks</span>
+        <span className={styles.logoText}>{headerLabels.logo}</span>
       </Link>
 
-      <nav className={styles.nav} aria-label="Main navigation">
+      <nav className={styles.nav} aria-label={headerLabels.navigationAriaLabel}>
         {navItems.map((item) => (
           <Link
             key={item.value}
@@ -106,20 +115,20 @@ const Header = ({ activeItem = "explore" }: HeaderProps) => {
         <button
           className={styles.searchButton}
           type="button"
-          aria-label="Search"
+          aria-label={headerLabels.searchAriaLabel}
         >
           <SearchIcon />
         </button>
 
         <Link href="/upload" className={styles.uploadButton}>
           <UploadIcon />
-          <span>Upload Build</span>
+          <span>{headerLabels.upload}</span>
         </Link>
 
         <div
           className={styles.profileAvatar}
           role="img"
-          aria-label="User profile"
+          aria-label={headerLabels.profileAriaLabel}
         />
       </div>
     </header>

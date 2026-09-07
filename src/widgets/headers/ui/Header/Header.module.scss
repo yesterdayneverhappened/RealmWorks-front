@@ -129,7 +129,7 @@
   color: var(--white);
   background: var(--main-color);
   border-radius: 99px;
-  box-shadow: 0 12px 24px rgba(255, 107, 107, 0.08);
+  box-shadow: 0 12px 24px var(--shadow-color);
 
   font-family: var(--font-figtree), sans-serif;
   font-size: 14px;
