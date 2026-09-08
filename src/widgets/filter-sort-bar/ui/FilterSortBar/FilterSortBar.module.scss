@@ -1,0 +1,176 @@
+.bar {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin: 0 48px 24px;
+  padding: 24px;
+  gap: 20px;
+
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: 0 8px 16px rgba(30, 27, 24, 0.03);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  gap: 24px;
+}
+
+.searchBox {
+  width: min(460px, 100%);
+}
+
+.sortGroup {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.sortLabel {
+  color: var(--secondary-text-color);
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  white-space: nowrap;
+}
+
+.sortPill,
+.categoryChip {
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+}
+
+.sortPill {
+  min-height: 36px;
+  padding: 10px 16px;
+
+  color: var(--main-text-color);
+  background: var(--bg-gray-color);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+}
+
+.sortPill:focus-visible,
+.categoryChip:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+.sortPillActive {
+  color: var(--white);
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.categoryChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  width: 100%;
+  gap: 8px;
+}
+
+.categoryChip {
+  min-height: 32px;
+  padding: 8px 16px;
+
+  border-radius: 12px;
+}
+
+.categoryChip0,
+.categoryChip7 {
+  color: var(--main-color);
+  background: var(--main-light-color);
+  border: 1px solid var(--main-color);
+}
+
+.categoryChip1,
+.categoryChip5 {
+  color: #3b82f6;
+  background: #eff6ff;
+  border: 1px solid #3b82f6;
+}
+
+.categoryChip2 {
+  color: #ff6b6b;
+  background: #ffebeb;
+  border: 1px solid #ff6b6b;
+}
+
+.categoryChip3,
+.categoryChip6 {
+  color: #06b6d4;
+  background: #ecfeff;
+  border: 1px solid #06b6d4;
+}
+
+.categoryChip4 {
+  color: #261f33;
+  background: #fef3c7;
+  border: 1px solid #fbbf24;
+}
+
+@media (max-width: 1000px) {
+  .topRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .sortGroup {
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+}
+
+@media (max-width: 700px) {
+  .bar {
+    margin: 0 16px 20px;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .categoryChips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  .sortGroup {
+    align-items: flex-start;
+  }
+
+  .sortLabel {
+    padding-top: 10px;
+  }
+}
