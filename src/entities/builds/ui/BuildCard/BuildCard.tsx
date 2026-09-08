@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import CategoryBadge from "@/entities/categories/ui/CategoryBadge/CategoryBadge";
 import TagsList from "@/entities/tags/ui/TagsList/TagsList";
-import styles from './BuildCards.module.scss';
+import styles from "./BuildCards.module.scss";
 
 interface BuildCardProps {
+  id: string;
   title: string;
   author: string;
   imageUrl: string;
@@ -17,6 +19,7 @@ interface BuildCardProps {
 }
 
 const BuildCard = ({
+  id,
   title,
   imageUrl,
   author,
@@ -28,80 +31,78 @@ const BuildCard = ({
   countDownloads,
 }: BuildCardProps) => {
   return (
-    <article className={styles.card}>
-      <div className={styles.preview}>
-        <Image
-          src={imageUrl}
-          alt={title}
-          fill
-          sizes="100%"
-          className={styles.previewImage}
-        />
-      </div>
-
-      <div className={styles.details}>
-        <div className={styles.meta}>
-          <CategoryBadge label={category} />
-
-          <div className={styles.likes}>
-            <Image
-              src="/icons/heart.svg"
-              alt="like"
-              width={14}
-              height={14}
-              className={styles.likeIcon}
-            />
-            {likes}
-          </div>
+    <Link href={`/builds/${id}`} className={styles.cardLink}>
+      <article className={styles.card}>
+        <div className={styles.preview}>
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            sizes="100%"
+            className={styles.previewImage}
+          />
         </div>
 
-        <div className={styles.info}>
-          <h2 className={styles.title}>
-            {title}
-          </h2>
+        <div className={styles.details}>
+          <div className={styles.meta}>
+            <CategoryBadge label={category} />
 
-          <div className={styles.creator}>
-            <Image
-              src={avatarUrl}
-              alt={author}
-              width={24}
-              height={24}
-              className={styles.avatar}
-            />
-
-            <span className={styles.author}>
-              {author}
-            </span>
+            <div className={styles.likes}>
+              <Image
+                src="/icons/heart.svg"
+                alt="like"
+                width={14}
+                height={14}
+                className={styles.likeIcon}
+              />
+              {likes}
+            </div>
           </div>
 
-          <TagsList tags={tags} />
+          <div className={styles.info}>
+            <h2 className={styles.title}>{title}</h2>
+
+            <div className={styles.creator}>
+              <Image
+                src={avatarUrl}
+                alt={author}
+                width={24}
+                height={24}
+                className={styles.avatar}
+              />
+
+              <span className={styles.author}>{author}</span>
+            </div>
+
+            <TagsList tags={tags} />
+          </div>
+
+          <div className={styles.stats}>
+            <div className={styles.stat}>
+              <Image
+                src="/icons/download.svg"
+                alt="download"
+                width={14}
+                height={14}
+                className={styles.likeIcon}
+              />
+              {countDownloads}
+            </div>
+
+            <div className={styles.stat}>
+              <Image
+                src="/icons/message-circle.svg"
+                alt="comment"
+                width={14}
+                height={14}
+                className={styles.likeIcon}
+              />
+              {countComments}
+            </div>
+          </div>
         </div>
-
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            <Image
-              src="/icons/download.svg"
-              alt="download"
-              width={14}
-              height={14}
-              className={styles.likeIcon}
-            />
-            {countDownloads}
-          </div>
-
-          <div className={styles.stat}>
-            <Image
-              src="/icons/message-circle.svg"
-              alt="comment"
-              width={14}
-              height={14}
-              className={styles.likeIcon}
-            />
-            {countComments}
-          </div>
-        </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
 
