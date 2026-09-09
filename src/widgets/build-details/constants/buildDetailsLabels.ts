@@ -11,6 +11,30 @@ export const buildDetailsLabels = {
   description:
     "An astronomical palace floating gracefully above the cloud line. Features fully detailed interior banquet halls, a master bedroom in the central spire, auto-harvesting wheat and melon crops in the hanging gardens, and three custom-designed waterfalls cascading into the void. Completely built in Survival over the course of 3 months. Perfect as a base or spawn hub!",
   tags: ["Fantasy", "Sky", "MegaBuild", "SurvivalFriendly", "Waterfalls"],
+  commentsTitle: "Comments (42)",
+  commentInputPlaceholder: "Share your thoughts or ask a question...",
+  commentComposerAriaLabel: "Write a comment",
+  commentSubmitAriaLabel: "Send comment",
+  comments: [
+    {
+      author: "MineCraftGuy99",
+      createdAt: "2 hours ago",
+      text: "Incredible attention to detail! The way the waterfalls carry over the edges looks so realistic with shaders on.",
+      avatarTone: "Creeper",
+    },
+    {
+      author: "Voxel_Explorer",
+      createdAt: "1 day ago",
+      text: "Is this schematic compatible with Litematica? Can't wait to build this on my SMP server!",
+      avatarTone: "Steve",
+    },
+    {
+      author: "SakuraLover",
+      createdAt: "3 days ago",
+      text: "The cherry blossom trees at the base of the palace fit the theme so perfectly. Subscribed for more of your content!",
+      avatarTone: "Sakura",
+    },
+  ],
   getBuildTitle: "Get this Build",
   likesLabel: "Likes",
   likesValue: "1,240",

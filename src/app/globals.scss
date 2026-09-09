@@ -4,16 +4,27 @@
   --main-text-color: #1e1b18;
   --secondary-text-color: #6b6661;
 
-  --bg-gray-color: #faf8f5;
+  --page-bg-color: #faf8f5;
+  --bg-gray-color: var(--page-bg-color);
   --white: #fff;
 
   --border-color: #efece6;
   --main-light-color: #eef8ea;
 
+  --accent-purple: #7c3aed;
+  --accent-purple-bg: #f5f3ff;
+  --accent-purple-shadow: rgba(124, 58, 237, 0.08);
+
   --shadow-color: rgba(83, 166, 53, 0.12);
 }
 
+html,
 body {
+  min-height: 100%;
   margin: 0;
+  background: var(--page-bg-color);
+}
+
+body {
   font-family: var(--font-bricolage), sans-serif;
 }

@@ -86,6 +86,32 @@ const CloseCircleIcon = () => (
   </svg>
 );
 
+const ArrowRightIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M4.333 8H11.667"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8.667 5L11.667 8L8.667 11"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const BuildDetails = () => {
   return (
     <main className={styles.page}>
@@ -189,6 +215,54 @@ const BuildDetails = () => {
                 <span key={tag} className={styles.tag}>
                   #{tag}
                 </span>
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.commentsCard}>
+            <h2 className={styles.sectionTitle}>
+              {buildDetailsLabels.commentsTitle}
+            </h2>
+
+            <div className={styles.commentComposer}>
+              <div
+                className={`${styles.commentAvatar} ${styles.commentAvatarComposer}`}
+              />
+              <div className={styles.commentInput}>
+                <input
+                  className={styles.commentField}
+                  type="text"
+                  placeholder={buildDetailsLabels.commentInputPlaceholder}
+                  aria-label={buildDetailsLabels.commentComposerAriaLabel}
+                />
+                <button
+                  className={styles.commentSendButton}
+                  type="button"
+                  aria-label={buildDetailsLabels.commentSubmitAriaLabel}
+                >
+                  <ArrowRightIcon />
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.commentsList}>
+              {buildDetailsLabels.comments.map((comment) => (
+                <article key={comment.author} className={styles.comment}>
+                  <div
+                    className={`${styles.commentAvatar} ${styles[`commentAvatar${comment.avatarTone}`]}`}
+                  />
+                  <div className={styles.commentContent}>
+                    <div className={styles.commentMeta}>
+                      <span className={styles.commentAuthor}>
+                        {comment.author}
+                      </span>
+                      <span className={styles.commentDate}>
+                        {comment.createdAt}
+                      </span>
+                    </div>
+                    <p className={styles.commentText}>{comment.text}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </section>

@@ -1,5 +1,6 @@
 import { SearchInput } from "@/shared/ui/SearchInput";
 import { filterSortBarLabels } from "../../constants/filterSortBarLabels";
+import CategoryChips from "../CategoryChips/CategoryChips";
 import styles from "./FilterSortBar.module.scss";
 
 const FilterSortBar = () => {
@@ -28,17 +29,7 @@ const FilterSortBar = () => {
         </div>
       </div>
 
-      <div className={styles.categoryChips}>
-        {filterSortBarLabels.categories.map((category, index) => (
-          <button
-            key={category}
-            type="button"
-            className={`${styles.categoryChip} ${styles[`categoryChip${index}`]}`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+      <CategoryChips categories={filterSortBarLabels.categories} />
     </section>
   );
 };

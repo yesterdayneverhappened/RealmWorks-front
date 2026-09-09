@@ -77,7 +77,7 @@ const UploadIcon = () => (
   </svg>
 );
 
-const Header = ({ activeItem = "explore" }: HeaderProps) => {
+const Header = ({ activeItem }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <Link
@@ -125,9 +125,9 @@ const Header = ({ activeItem = "explore" }: HeaderProps) => {
           <span>{headerLabels.upload}</span>
         </Link>
 
-        <div
+        <Link
+          href="/profile"
           className={styles.profileAvatar}
-          role="img"
           aria-label={headerLabels.profileAriaLabel}
         />
       </div>

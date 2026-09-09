@@ -139,13 +139,19 @@
 }
 
 .profileAvatar {
+  box-sizing: border-box;
+
   width: 44px;
   height: 44px;
 
-  background: #d9d9d9;
+  background: linear-gradient(180deg, #fbbf24 0 22%, #fdba74 22% 58%, #78350f 58%);
   border: 2px solid var(--border-color);
   border-radius: 50%;
-  box-sizing: border-box;
+}
+
+.profileAvatar:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
 }
 
 @media (max-width: 900px) {

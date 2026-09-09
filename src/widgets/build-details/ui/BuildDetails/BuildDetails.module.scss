@@ -58,6 +58,7 @@
 .authorCard,
 .visualizerCard,
 .aboutCard,
+.commentsCard,
 .getBuildCard {
   box-sizing: border-box;
 
@@ -83,6 +84,15 @@
 
   padding: 32px;
   gap: 20px;
+}
+
+.commentsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 32px;
+  gap: 24px;
 }
 
 .sectionTitle {
@@ -145,6 +155,160 @@
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
+}
+
+.commentComposer {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  gap: 12px;
+}
+
+.commentAvatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  overflow: hidden;
+  background: #d9d9d9;
+  border-radius: 18px;
+}
+
+.commentAvatarComposer {
+  background: linear-gradient(180deg, #86efac 0 38%, #22c55e 38% 72%, #365314 72%);
+}
+
+.commentAvatarCreeper {
+  background: linear-gradient(180deg, #4ade80 0 42%, #166534 42% 70%, #052e16 70%);
+}
+
+.commentAvatarSteve {
+  background: linear-gradient(180deg, #ef4444 0 28%, #fdba74 28% 72%, #7c2d12 72%);
+}
+
+.commentAvatarSakura {
+  background: linear-gradient(180deg, #f9a8d4 0 40%, #ec4899 40% 74%, #9d174d 74%);
+}
+
+.commentInput {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 45px;
+  width: 100%;
+  padding: 14px;
+  gap: 12px;
+
+  background: var(--page-bg-color);
+  border-radius: 12px;
+}
+
+.commentField {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+
+  color: var(--main-text-color);
+  background: transparent;
+  border: 0;
+  outline: none;
+
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.commentField::placeholder {
+  color: var(--secondary-text-color);
+}
+
+.commentSendButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  flex-shrink: 0;
+
+  color: var(--accent-purple);
+  background: var(--accent-purple-bg);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  gap: 16px;
+}
+
+.comment {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+  padding-bottom: 16px;
+  gap: 12px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.comment:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.commentContent {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  gap: 4px;
+}
+
+.commentMeta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.commentAuthor {
+  color: var(--main-text-color);
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+}
+
+.commentDate {
+  color: var(--secondary-text-color);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.commentText {
+  margin: 0;
+
+  color: var(--secondary-text-color);
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
 }
 
 .category {
@@ -366,6 +530,7 @@
 }
 
 .followButton:focus-visible,
+.commentSendButton:focus-visible,
 .downloadButton:focus-visible,
 .favoriteButton:focus-visible {
   outline: 2px solid var(--main-color);
@@ -435,6 +600,7 @@
   .authorCard,
   .visualizerCard,
   .aboutCard,
+  .commentsCard,
   .getBuildCard {
     padding: 24px;
   }
@@ -451,6 +617,12 @@
   .authorRow {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .commentMeta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .relatedGrid {
