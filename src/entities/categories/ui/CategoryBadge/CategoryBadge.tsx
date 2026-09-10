@@ -1,4 +1,4 @@
-import styles from './CategoryBadge.module.scss';
+import styles from "./CategoryBadge.module.scss";
 
 interface CategoryBadgeProps {
   label: string;

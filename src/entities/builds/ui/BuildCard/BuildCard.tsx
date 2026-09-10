@@ -2,50 +2,46 @@ import Image from "next/image";
 import Link from "next/link";
 import CategoryBadge from "@/entities/categories/ui/CategoryBadge/CategoryBadge";
 import TagsList from "@/entities/tags/ui/TagsList/TagsList";
+import UserInline from "@/entities/users/ui/UserInline/UserInline";
+import type { BuildListItem, BuildPreviewTone } from "../../types/build-card";
 import styles from "./BuildCards.module.scss";
 
 interface BuildCardProps {
-  id: string;
-  title: string;
-  author: string;
-  imageUrl: string;
-  category: string;
-  avatarUrl: string;
-  tags: string[];
-  likes: number;
-  countComments: number;
-  countDownloads: number;
-  isLiked: boolean;
+  build: BuildListItem;
 }
 
-const BuildCard = ({
-  id,
-  title,
-  imageUrl,
-  author,
-  category,
-  avatarUrl,
-  tags,
-  likes,
-  countComments,
-  countDownloads,
-}: BuildCardProps) => {
+const previewToneClass: Record<BuildPreviewTone, string> = {
+  emerald: styles.previewEmerald,
+  amber: styles.previewAmber,
+  ocean: styles.previewOcean,
+  violet: styles.previewViolet,
+  sakura: styles.previewSakura,
+  stone: styles.previewStone,
+};
+
+const BuildCard = ({ build }: BuildCardProps) => {
   return (
-    <Link href={`/builds/${id}`} className={styles.cardLink}>
+    <Link href={`/builds/${build.id}`} className={styles.cardLink}>
       <article className={styles.card}>
-        <div className={styles.preview}>
-          <Image
-            src={imageUrl}
-            alt={title}
-            fill
-            sizes="100%"
-            className={styles.previewImage}
-          />
+        <div
+          className={`${styles.preview} ${previewToneClass[build.previewTone]}`}
+        >
+          {build.imageUrl ? (
+            <Image
+              src={build.imageUrl}
+              alt={build.title}
+              fill
+              sizes="100%"
+              className={styles.previewImage}
+            />
+          ) : (
+            <span className={styles.previewLabel}>{build.category}</span>
+          )}
         </div>
 
         <div className={styles.details}>
           <div className={styles.meta}>
-            <CategoryBadge label={category} />
+            <CategoryBadge label={build.category} />
 
             <div className={styles.likes}>
               <Image
@@ -55,26 +51,20 @@ const BuildCard = ({
                 height={14}
                 className={styles.likeIcon}
               />
-              {likes}
+              {build.likes}
             </div>
           </div>
 
           <div className={styles.info}>
-            <h2 className={styles.title}>{title}</h2>
+            <h2 className={styles.title}>{build.title}</h2>
 
-            <div className={styles.creator}>
-              <Image
-                src={avatarUrl}
-                alt={author}
-                width={24}
-                height={24}
-                className={styles.avatar}
-              />
+            <UserInline
+              name={build.author.name}
+              avatarUrl={build.author.avatarUrl}
+              tone={build.author.avatarTone}
+            />
 
-              <span className={styles.author}>{author}</span>
-            </div>
-
-            <TagsList tags={tags} />
+            <TagsList tags={build.tags} />
           </div>
 
           <div className={styles.stats}>
@@ -86,7 +76,7 @@ const BuildCard = ({
                 height={14}
                 className={styles.likeIcon}
               />
-              {countDownloads}
+              {build.downloads}
             </div>
 
             <div className={styles.stat}>
@@ -97,7 +87,7 @@ const BuildCard = ({
                 height={14}
                 className={styles.likeIcon}
               />
-              {countComments}
+              {build.comments}
             </div>
           </div>
         </div>

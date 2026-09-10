@@ -165,32 +165,6 @@
   gap: 12px;
 }
 
-.commentAvatar {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-
-  overflow: hidden;
-  background: #d9d9d9;
-  border-radius: 18px;
-}
-
-.commentAvatarComposer {
-  background: linear-gradient(180deg, #86efac 0 38%, #22c55e 38% 72%, #365314 72%);
-}
-
-.commentAvatarCreeper {
-  background: linear-gradient(180deg, #4ade80 0 42%, #166534 42% 70%, #052e16 70%);
-}
-
-.commentAvatarSteve {
-  background: linear-gradient(180deg, #ef4444 0 28%, #fdba74 28% 72%, #7c2d12 72%);
-}
-
-.commentAvatarSakura {
-  background: linear-gradient(180deg, #f9a8d4 0 40%, #ec4899 40% 74%, #9d174d 74%);
-}
-
 .commentInput {
   box-sizing: border-box;
 
@@ -341,46 +315,6 @@
 
   width: 100%;
   gap: 20px;
-}
-
-.creator {
-  display: flex;
-  align-items: center;
-
-  gap: 12px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-
-  background: #d9d9d9;
-  border-radius: 50%;
-}
-
-.creatorInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  gap: 2px;
-}
-
-.authorName {
-  color: var(--main-text-color);
-  font-family: var(--font-figtree), sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 19px;
-}
-
-.publishedAt {
-  color: var(--secondary-text-color);
-  font-family: var(--font-figtree), sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14px;
 }
 
 .followButton {

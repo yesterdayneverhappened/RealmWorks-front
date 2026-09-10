@@ -1,5 +1,5 @@
-import Tag from '../Tag/Tag';
-import styles from './TagsList.module.scss';
+import Tag from "../Tag/Tag";
+import styles from "./TagsList.module.scss";
 
 interface TagsListProps {
   tags: string[];

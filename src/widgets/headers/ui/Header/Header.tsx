@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { currentUser } from "@/entities/users/constants/mockUsers";
+import UserAvatar from "@/entities/users/ui/UserAvatar/UserAvatar";
 import { headerLabels } from "../../constants/headerLabels";
 import styles from "./Header.module.scss";
 
@@ -112,13 +114,13 @@ const Header = ({ activeItem }: HeaderProps) => {
       </nav>
 
       <div className={styles.actions}>
-        <button
+        <Link
+          href="/search"
           className={styles.searchButton}
-          type="button"
           aria-label={headerLabels.searchAriaLabel}
         >
           <SearchIcon />
-        </button>
+        </Link>
 
         <Link href="/upload" className={styles.uploadButton}>
           <UploadIcon />
@@ -127,9 +129,18 @@ const Header = ({ activeItem }: HeaderProps) => {
 
         <Link
           href="/profile"
-          className={styles.profileAvatar}
+          className={styles.profileLink}
           aria-label={headerLabels.profileAriaLabel}
-        />
+        >
+          <UserAvatar
+            name={currentUser.name}
+            avatarUrl={currentUser.avatarUrl}
+            tone={currentUser.avatarTone}
+            size="lg"
+            border="soft"
+            alt=""
+          />
+        </Link>
       </div>
     </header>
   );

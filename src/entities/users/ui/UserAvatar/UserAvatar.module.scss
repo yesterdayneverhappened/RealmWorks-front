@@ -1,0 +1,92 @@
+.avatar {
+  box-sizing: border-box;
+
+  display: inline-flex;
+  flex-shrink: 0;
+
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.sizeXs {
+  width: 24px;
+  height: 24px;
+}
+
+.sizeSm {
+  width: 36px;
+  height: 36px;
+}
+
+.sizeMd {
+  width: 40px;
+  height: 40px;
+}
+
+.sizeLg {
+  width: 44px;
+  height: 44px;
+}
+
+.sizeXl {
+  width: 120px;
+  height: 120px;
+}
+
+.borderSoft {
+  border: 2px solid var(--border-color);
+}
+
+.borderAccent {
+  border: 4px solid var(--accent-purple);
+  box-shadow: 0 12px 24px var(--accent-purple-shadow);
+}
+
+.toneNeutral {
+  background: linear-gradient(180deg, #d4d4d8 0 40%, #a1a1aa 40% 72%, #52525b 72%);
+}
+
+.toneGold {
+  background: linear-gradient(180deg, #fbbf24 0 22%, #fdba74 22% 58%, #78350f 58%);
+}
+
+.toneEmerald {
+  background: linear-gradient(180deg, #86efac 0 38%, #22c55e 38% 72%, #365314 72%);
+}
+
+.toneCreeper {
+  background: linear-gradient(180deg, #4ade80 0 42%, #166534 42% 70%, #052e16 70%);
+}
+
+.toneSteve {
+  background: linear-gradient(180deg, #ef4444 0 28%, #fdba74 28% 72%, #7c2d12 72%);
+}
+
+.toneSakura {
+  background: linear-gradient(180deg, #f9a8d4 0 40%, #ec4899 40% 74%, #9d174d 74%);
+}
+
+.toneOcean {
+  background: linear-gradient(180deg, #93c5fd 0 36%, #3b82f6 36% 72%, #1e3a8a 72%);
+}
+
+@media (max-width: 560px) {
+  .sizeLg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sizeXl {
+    width: 96px;
+    height: 96px;
+  }
+}

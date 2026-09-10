@@ -1,3 +1,12 @@
+import type { UserAvatarTone } from "@/entities/users/types/user";
+
+interface BuildComment {
+  author: string;
+  createdAt: string;
+  text: string;
+  avatarTone: UserAvatarTone;
+}
+
 export const buildDetailsLabels = {
   category: "Castles",
   title: "Zephyr Cloud Castle & Gardens",
@@ -20,21 +29,21 @@ export const buildDetailsLabels = {
       author: "MineCraftGuy99",
       createdAt: "2 hours ago",
       text: "Incredible attention to detail! The way the waterfalls carry over the edges looks so realistic with shaders on.",
-      avatarTone: "Creeper",
+      avatarTone: "creeper",
     },
     {
       author: "Voxel_Explorer",
       createdAt: "1 day ago",
       text: "Is this schematic compatible with Litematica? Can't wait to build this on my SMP server!",
-      avatarTone: "Steve",
+      avatarTone: "steve",
     },
     {
       author: "SakuraLover",
       createdAt: "3 days ago",
       text: "The cherry blossom trees at the base of the palace fit the theme so perfectly. Subscribed for more of your content!",
-      avatarTone: "Sakura",
+      avatarTone: "sakura",
     },
-  ],
+  ] satisfies BuildComment[],
   getBuildTitle: "Get this Build",
   likesLabel: "Likes",
   likesValue: "1,240",
@@ -43,58 +52,4 @@ export const buildDetailsLabels = {
   downloadSchematic: "Download Schematic",
   addToFavorites: "Add to Favorites",
   relatedTitle: "Related Builds",
-  relatedBuilds: [
-    {
-      id: "related-1",
-      title: "Emerald Sky Fortress",
-      author: "Steve",
-      imageUrl: "/icons/logo-cube.svg",
-      avatarUrl: "/icons/logo-cube.svg",
-      category: "Castles",
-      tags: ["Fantasy", "Sky"],
-      likes: 312,
-      countComments: 24,
-      countDownloads: 118,
-      isLiked: false,
-    },
-    {
-      id: "related-2",
-      title: "Forest Survival Base",
-      author: "Alex",
-      imageUrl: "/icons/logo-cube.svg",
-      avatarUrl: "/icons/logo-cube.svg",
-      category: "Survival",
-      tags: ["Organic", "Base"],
-      likes: 205,
-      countComments: 16,
-      countDownloads: 92,
-      isLiked: false,
-    },
-    {
-      id: "related-3",
-      title: "Ancient Garden Keep",
-      author: "Builder",
-      imageUrl: "/icons/logo-cube.svg",
-      avatarUrl: "/icons/logo-cube.svg",
-      category: "Medieval",
-      tags: ["Garden", "Castle"],
-      likes: 184,
-      countComments: 11,
-      countDownloads: 76,
-      isLiked: false,
-    },
-    {
-      id: "related-4",
-      title: "Floating Village Hub",
-      author: "Notch",
-      imageUrl: "/icons/logo-cube.svg",
-      avatarUrl: "/icons/logo-cube.svg",
-      category: "Fantasy",
-      tags: ["Village", "Sky"],
-      likes: 267,
-      countComments: 19,
-      countDownloads: 104,
-      isLiked: false,
-    },
-  ],
 };

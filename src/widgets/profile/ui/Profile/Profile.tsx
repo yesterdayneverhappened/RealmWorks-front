@@ -1,24 +1,28 @@
 "use client";
 
 import { type KeyboardEvent, useState } from "react";
+import { mockBuilds } from "@/entities/builds/constants/mockBuilds";
+import type { BuildListItem } from "@/entities/builds/types/build-card";
 import BuildCard from "@/entities/builds/ui/BuildCard/BuildCard";
+import { mockUserProfile } from "@/entities/users/constants/mockUsers";
+import UserProfileHeader from "@/entities/users/ui/UserProfileHeader/UserProfileHeader";
 import {
   type ProfileTabId,
   profileLabels,
 } from "../../constants/profileLabels";
 import styles from "./Profile.module.scss";
 
-const buildsByTab = {
-  my: profileLabels.myBuilds,
-  liked: profileLabels.likedBuilds,
-  collections: profileLabels.collections,
-} as const;
+const buildsByTab: Record<ProfileTabId, BuildListItem[]> = {
+  my: mockBuilds.filter((build) => build.author.id === mockUserProfile.id),
+  liked: mockBuilds.filter((build) => build.isLiked),
+  collections: [],
+};
 
-const emptyByTab = {
+const emptyByTab: Record<ProfileTabId, string | null> = {
   my: null,
   liked: profileLabels.emptyLiked,
   collections: profileLabels.emptyCollections,
-} as const;
+};
 
 const tabIds = profileLabels.tabs.map((tab) => tab.id);
 
@@ -57,42 +61,19 @@ const Profile = () => {
 
   return (
     <main className={styles.page}>
-      <section className={styles.hero} aria-label={profileLabels.name}>
-        <div
-          className={styles.avatar}
-          role="img"
-          aria-label={profileLabels.avatarAriaLabel}
-        />
-
-        <div className={styles.info}>
-          <div className={styles.topRow}>
-            <div className={styles.identity}>
-              <h1 className={styles.name}>{profileLabels.name}</h1>
-              <span className={styles.handle}>{profileLabels.handle}</span>
-            </div>
-
-            <div className={styles.actions}>
-              <button className={styles.editButton} type="button">
-                {profileLabels.editProfile}
-              </button>
-              <button className={styles.shareButton} type="button">
-                {profileLabels.shareProfile}
-              </button>
-            </div>
-          </div>
-
-          <p className={styles.bio}>{profileLabels.bio}</p>
-
-          <div className={styles.stats}>
-            {profileLabels.stats.map((stat) => (
-              <div key={stat.label} className={styles.stat}>
-                <span className={styles.statValue}>{stat.value}</span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <UserProfileHeader
+        user={mockUserProfile}
+        actions={
+          <>
+            <button className={styles.editButton} type="button">
+              {profileLabels.editProfile}
+            </button>
+            <button className={styles.shareButton} type="button">
+              {profileLabels.shareProfile}
+            </button>
+          </>
+        }
+      />
 
       <div
         className={styles.tabs}
@@ -130,20 +111,7 @@ const Profile = () => {
         {builds.length > 0 ? (
           <div className={styles.buildsGrid}>
             {builds.map((build) => (
-              <BuildCard
-                key={build.id}
-                id={build.id}
-                title={build.title}
-                author={build.author}
-                imageUrl={build.imageUrl}
-                avatarUrl={build.avatarUrl}
-                category={build.category}
-                tags={build.tags}
-                likes={build.likes}
-                countComments={build.countComments}
-                countDownloads={build.countDownloads}
-                isLiked={build.isLiked}
-              />
+              <BuildCard key={build.id} build={build} />
             ))}
           </div>
         ) : (

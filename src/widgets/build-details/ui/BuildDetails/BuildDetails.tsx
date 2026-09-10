@@ -1,6 +1,12 @@
+import { mockBuilds } from "@/entities/builds/constants/mockBuilds";
 import BuildCard from "@/entities/builds/ui/BuildCard/BuildCard";
+import { currentUser } from "@/entities/users/constants/mockUsers";
+import UserAvatar from "@/entities/users/ui/UserAvatar/UserAvatar";
+import UserInline from "@/entities/users/ui/UserInline/UserInline";
 import { buildDetailsLabels } from "../../constants/buildDetailsLabels";
 import styles from "./BuildDetails.module.scss";
+
+const relatedBuilds = mockBuilds.slice(0, 4);
 
 const HeartIcon = () => (
   <svg
@@ -176,17 +182,12 @@ const BuildDetails = () => {
             <h1 className={styles.title}>{buildDetailsLabels.title}</h1>
 
             <div className={styles.authorRow}>
-              <div className={styles.creator}>
-                <div className={styles.avatar} />
-                <div className={styles.creatorInfo}>
-                  <span className={styles.authorName}>
-                    {buildDetailsLabels.author}
-                  </span>
-                  <span className={styles.publishedAt}>
-                    {buildDetailsLabels.publishedAt}
-                  </span>
-                </div>
-              </div>
+              <UserInline
+                name={buildDetailsLabels.author}
+                meta={buildDetailsLabels.publishedAt}
+                tone="gold"
+                size="md"
+              />
 
               <button className={styles.followButton} type="button">
                 {buildDetailsLabels.followCreator}
@@ -225,8 +226,11 @@ const BuildDetails = () => {
             </h2>
 
             <div className={styles.commentComposer}>
-              <div
-                className={`${styles.commentAvatar} ${styles.commentAvatarComposer}`}
+              <UserAvatar
+                name={currentUser.name}
+                avatarUrl={currentUser.avatarUrl}
+                tone={currentUser.avatarTone}
+                alt=""
               />
               <div className={styles.commentInput}>
                 <input
@@ -248,8 +252,10 @@ const BuildDetails = () => {
             <div className={styles.commentsList}>
               {buildDetailsLabels.comments.map((comment) => (
                 <article key={comment.author} className={styles.comment}>
-                  <div
-                    className={`${styles.commentAvatar} ${styles[`commentAvatar${comment.avatarTone}`]}`}
+                  <UserAvatar
+                    name={comment.author}
+                    tone={comment.avatarTone}
+                    alt=""
                   />
                   <div className={styles.commentContent}>
                     <div className={styles.commentMeta}>
@@ -273,21 +279,8 @@ const BuildDetails = () => {
             {buildDetailsLabels.relatedTitle}
           </h2>
           <div className={styles.relatedGrid}>
-            {buildDetailsLabels.relatedBuilds.map((build) => (
-              <BuildCard
-                key={build.id}
-                id={build.id}
-                title={build.title}
-                author={build.author}
-                imageUrl={build.imageUrl}
-                avatarUrl={build.avatarUrl}
-                category={build.category}
-                tags={build.tags}
-                likes={build.likes}
-                countComments={build.countComments}
-                countDownloads={build.countDownloads}
-                isLiked={build.isLiked}
-              />
+            {relatedBuilds.map((build) => (
+              <BuildCard key={build.id} build={build} />
             ))}
           </div>
         </section>

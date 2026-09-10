@@ -97,7 +97,7 @@
 
 .searchButton,
 .uploadButton,
-.profileAvatar {
+.profileLink {
   flex-shrink: 0;
 }
 
@@ -115,6 +115,7 @@
   border: 0;
   border-radius: 20px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .uploadButton {
@@ -138,18 +139,14 @@
   text-decoration: none;
 }
 
-.profileAvatar {
-  box-sizing: border-box;
+.profileLink {
+  display: inline-flex;
 
-  width: 44px;
-  height: 44px;
-
-  background: linear-gradient(180deg, #fbbf24 0 22%, #fdba74 22% 58%, #78350f 58%);
-  border: 2px solid var(--border-color);
   border-radius: 50%;
 }
 
-.profileAvatar:focus-visible {
+.searchButton:focus-visible,
+.profileLink:focus-visible {
   outline: 2px solid var(--accent-purple);
   outline-offset: 2px;
 }
@@ -202,11 +199,6 @@
 
   .uploadButton span {
     display: none;
-  }
-
-  .profileAvatar {
-    width: 40px;
-    height: 40px;
   }
 }
 
